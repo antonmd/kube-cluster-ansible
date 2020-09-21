@@ -1,0 +1,8 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: allow 'tohadvornikov' to have passwordless sudo
+    lineinfile:
+      dest: /etc/sudoers
+      line: 'tohadvornikov ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
